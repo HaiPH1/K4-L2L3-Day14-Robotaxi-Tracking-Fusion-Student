@@ -2,34 +2,34 @@ PHIẾU CÁ NHÂN — DAY 14
 Điền file này, chạy QC vào submission/qc-j01 và submission/qc-practice, commit rồi nộp link repo.
 Không dán ảnh, toạ độ điểm hay nội dung file export vào đây.
 
-Họ tên / mã học viên:
-Object J01 (a/b/c/d theo docs/cases.md) / track ID trong task J01:
-Phiên bản CVAT / overlay đã bật (có/không):
+Họ tên / mã học viên: Phạm Hữu Hải / 2A202602098
+Object J01 (a/b/c/d theo docs/cases.md) / track ID trong task J01: J01-a / track ID 1
+Phiên bản CVAT / overlay đã bật (có/không): 2.74.1 / có
 
 J01 — TRACK LÕI
-Frame fit và lý do:
-L / W / H (m):
-Keyframe quan trọng và lý do:
-Đã bấm F qua đủ frame 0–65 (có/không):
-Đoạn thưa / che khuất / dễ nhầm identity:
+Frame fit và lý do: Frame 23 (frame neo, xe gần ego, cụm điểm dày đủ để fit chính xác Top/Side/Front)
+L / W / H (m): 4.25 / 2.1 / 1.69
+Keyframe quan trọng và lý do: Frame 10 (đầu track, xe bắt đầu xuất hiện trong point cloud), frame 23 (frame neo, fit tham chiếu), frame 65 (cuối track). Các frame giữa thêm keyframe khi nội suy lệch khỏi cụm điểm.
+Đã bấm F qua đủ frame 0–65 (có/không): Có (từ frame 10 đến 65, xe chưa xuất hiện trước frame 10)
+Đoạn thưa / che khuất / dễ nhầm identity: Frame 10-15 xe ở xa, điểm thưa. Frame 28 trở đi xe ra khỏi FOV camera trước (image_1) nhưng vẫn có điểm trong point cloud.
 
 SELF-QC (từ qc_tracks.csv / qc_flags.csv)
-Lần QC đầu — cờ của track J01 (loại, frame):
-Quyết định cho từng cờ (sửa / giữ vì hợp lệ / chưa đủ evidence) và lý do:
-Đã sửa gì sau QC đầu; QC cuối còn cờ nào:
-Nhận xét của bạn cùng cặp và bạn đồng ý/không đồng ý vì sao:
+Lần QC đầu — cờ của track J01 (loại, frame): fragmentation_suspect ở frame 10
+Quyết định cho từng cờ (sửa / giữ vì hợp lệ / chưa đủ evidence) và lý do: Giữ vì hợp lệ — xe chưa xuất hiện trong point cloud trước frame 10, track bắt đầu đúng lúc xe có đủ điểm.
+Đã sửa gì sau QC đầu; QC cuối còn cờ nào: L/W/H drift đã bằng 0, không cần sửa thêm. QC cuối còn fragmentation_suspect (hợp lệ).
+Nhận xét của bạn cùng cặp và bạn đồng ý/không đồng ý vì sao: (chưa review cặp)
 
 CAMERA–LIDAR (overlay trên image_1)
-Ca bình thường (frame / quan sát):
-Ca khó (frame / quan sát 2D / quan sát 3D):
-Giả thuyết nguyên nhân (annotation / FOV / occlusion / sparse / nghi calibration / chưa đủ evidence):
-Hành động (sửa / giữ / báo Lab Coach) và lý do:
+Ca bình thường (frame / quan sát): Frame 23 — overlay cuboid bao đúng xe trên image_1, đầu-đuôi khớp, kích thước hợp lý so với xe thực trên ảnh.
+Ca khó (frame / quan sát 2D / quan sát 3D): Frame 28 — 2D: xe đã ra khỏi FOV camera trước (image_1), không thấy xe trên ảnh. 3D: cụm điểm xe vẫn có trong point cloud, cuboid vẫn ôm đúng cụm điểm.
+Giả thuyết nguyên nhân (annotation / FOV / occlusion / sparse / nghi calibration / chưa đủ evidence): FOV — xe di chuyển ra khỏi góc nhìn camera trước, không phải lỗi annotation hay calibration.
+Hành động (sửa / giữ / báo Lab Coach) và lý do: Giữ — xe vẫn tồn tại trong point cloud, chỉ ra khỏi FOV camera. Track tiếp tục dựa trên point cloud.
 
 CASE NGẮN (task practice)
-Case → track ID (ví dụ B01 → 3):
-Case đã xong:
-Case đang dở / chỗ kẹt:
-fragmentation_suspect ở đầu/cuối case đã kiểm là do cách cắt case (có/không):
+Case → track ID (ví dụ B01 → 3): B01 → track ID 3
+Case đã xong: B01
+Case đang dở / chỗ kẹt: Không
+fragmentation_suspect ở đầu/cuối case đã kiểm là do cách cắt case (có/không): Có
 
 THỜI GIAN
-J01 / case ngắn / QC và fusion:
+J01 / case ngắn / QC và fusion: 75 phút / 15 phút / 20 phút
